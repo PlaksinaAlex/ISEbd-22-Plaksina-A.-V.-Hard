@@ -25,7 +25,7 @@ namespace Lab1_Plaksina
         public bool Window { private set; get; }
         public bool Floor { private set; get; }
 
-        private DopClass_Illuminators Illuminators;
+        private DopClass_Illuminators Illuminators = new DopClass_Illuminators();
 
         public void Init(int maxSpeed, float weight, Color mainColor, Color dopColor, bool window, bool floor, int CountIll)
 
@@ -36,7 +36,7 @@ namespace Lab1_Plaksina
             DopColor = dopColor;
             Window = window;
             Floor = floor;
-            Illuminators = new DopClass_Illuminators(CountIll);
+            Illuminators.Illuminator = CountIll;
         }
         public void SetPosition(int x, int y, int width, int height)
         {

@@ -31,11 +31,6 @@ namespace Lab1_Plaksina
 			}
 		}
 
-		public DopClass_Illuminators(int count)
-		{
-			Illuminator = count;
-		}
-
 		Pen pen = new Pen(Color.Black, 2);
 
 		private void DrawIlluminatorsTen(Graphics g, float _startPosX, float _startPosY, Color color)
