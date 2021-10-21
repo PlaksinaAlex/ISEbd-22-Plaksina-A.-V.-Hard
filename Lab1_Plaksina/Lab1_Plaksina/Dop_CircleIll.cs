@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Lab1_Plaksina
 {
-	class DopClass_Illuminators
+	class Dop_CircleIll: Inter_Dop
 	{
 		private Dop_Perechisl illuminator;
 
