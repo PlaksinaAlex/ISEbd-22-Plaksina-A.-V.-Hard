@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aerobus.cs" />
+    <Compile Include="Aerodrom.cs" />
     <Compile Include="Airplane.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Dop_CircleIll.cs" />
@@ -59,6 +60,12 @@
     <Compile Include="FormAerobus.Designer.cs">
       <DependentUpon>FormAerobus.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAerodrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAerodrom.Designer.cs">
+      <DependentUpon>FormAerodrom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inter_Dop.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
@@ -66,6 +73,9 @@
     <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="FormAerobus.resx">
       <DependentUpon>FormAerobus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAerodrom.resx">
+      <DependentUpon>FormAerodrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
