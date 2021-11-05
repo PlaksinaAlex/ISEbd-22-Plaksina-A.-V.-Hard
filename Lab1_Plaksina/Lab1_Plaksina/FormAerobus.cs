@@ -20,6 +20,12 @@ namespace Lab1_Plaksina
             InitializeComponent();
         }
 
+        public void SetAir(ITransport aer)
+        {
+            this.aer = aer;
+            Draw();
+        }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxAerobus.Width, pictureBoxAerobus.Height);

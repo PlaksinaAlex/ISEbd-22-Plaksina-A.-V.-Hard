@@ -16,7 +16,7 @@ namespace Lab1_Plaksina
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAerobus());
+            Application.Run(new FormAerodrom());
         }
     }
 }
