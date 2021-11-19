@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Aerobus.cs" />
     <Compile Include="Aerodrom.cs" />
+    <Compile Include="AerodromCollection.cs" />
     <Compile Include="Airplane.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Dop_CircleIll.cs" />
