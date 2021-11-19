@@ -8,7 +8,7 @@ namespace Lab1_Plaksina
 {
 	public class AerodromCollection
 	{
-		readonly Dictionary<string, Aerodrom<Airplane, Dop_CircleIll>> aerodromStages;
+		readonly Dictionary<string, Aerodrom<Vehicle, Dop_CircleIll>> aerodromStages;
 		public List<string> Keys => aerodromStages.Keys.ToList();
 
 		private readonly int pictureWidth;
@@ -17,7 +17,7 @@ namespace Lab1_Plaksina
 
 		public AerodromCollection(int pictureWidth, int pictureHeight)
 		{
-			aerodromStages = new Dictionary<string, Aerodrom<Airplane, Dop_CircleIll>>();
+			aerodromStages = new Dictionary<string, Aerodrom<Vehicle, Dop_CircleIll>>();
 			this.pictureWidth = pictureWidth;
 			this.pictureHeight = pictureHeight;
 		}
@@ -28,7 +28,7 @@ namespace Lab1_Plaksina
 			{
 				return;
 			}
-			aerodromStages.Add(name, new Aerodrom<Airplane, Dop_CircleIll>(pictureWidth, pictureHeight));
+			aerodromStages.Add(name, new Aerodrom<Vehicle, Dop_CircleIll>(pictureWidth, pictureHeight));
 		}
 
 		public void DelAerodrom(string name)
@@ -39,7 +39,7 @@ namespace Lab1_Plaksina
 			}
 		}
 
-		public Aerodrom<Airplane, Dop_CircleIll> this[string ind]
+		public Aerodrom<Vehicle, Dop_CircleIll> this[string ind]
 		{
 			get
 			{
@@ -53,7 +53,7 @@ namespace Lab1_Plaksina
 				}
 			}
 		}
-		public Airplane this[string ind, int ind2]
+		public Vehicle this[string ind, int ind2]
 		{
 			get
 			{

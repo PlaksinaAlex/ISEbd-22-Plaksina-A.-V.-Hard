@@ -14,13 +14,13 @@ namespace Lab1_Plaksina
 	{
 		private readonly AerodromCollection aerodromCollection;
 
-		private LinkedList<Airplane> link_list;
+		private LinkedList<Vehicle> link_list;
 
 		public FormAerodrom()
 		{
 			InitializeComponent();
 			aerodromCollection = new AerodromCollection(pictureBoxAerodrom.Width, pictureBoxAerodrom.Height);
-			link_list = new LinkedList<Airplane>();
+			link_list = new LinkedList<Vehicle>();
 			Draw();
 		}
 
