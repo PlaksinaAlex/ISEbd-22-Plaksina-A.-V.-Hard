@@ -61,6 +61,12 @@
     <Compile Include="FormAerobus.Designer.cs">
       <DependentUpon>FormAerobus.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAerobusConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAerobusConfig.Designer.cs">
+      <DependentUpon>FormAerobusConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAerodrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="FormAerobus.resx">
       <DependentUpon>FormAerobus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAerobusConfig.resx">
+      <DependentUpon>FormAerobusConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAerodrom.resx">
       <DependentUpon>FormAerodrom.cs</DependentUpon>

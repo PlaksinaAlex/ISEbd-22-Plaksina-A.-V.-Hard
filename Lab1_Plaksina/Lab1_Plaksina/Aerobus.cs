@@ -59,6 +59,15 @@ namespace Lab1_Plaksina
 
             InD.DrawIlluminators(g, _startPosX, _startPosY, DopColor);
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
+
+        public void SetTypesIll(Inter_Dop type)
+        {
+            this.InD = type;
+        }
     }
 }
 

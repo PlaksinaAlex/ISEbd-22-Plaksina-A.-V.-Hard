@@ -57,51 +57,6 @@ namespace Lab1_Plaksina
 				pictureBoxAerodrom.Image = bmp;
 			};
 		}
-
-		private void buttonSetAirplane_Click(object sender, EventArgs e)
-		{
-			if (listBoxAerodrom.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					var airplane = new Airplane(100, 1000, dialog.Color);
-					if (aerodromCollection[listBoxAerodrom.SelectedItem.ToString()] + airplane)
-					{
-						Draw();
-					}
-					else
-					{
-						MessageBox.Show("Аэродром переполнен");
-					}
-				}
-			}
-		}
-
-		private void buttonSetAerobus_Click(object sender, EventArgs e)
-		{
-			if (listBoxAerodrom.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					ColorDialog dialogDop = new ColorDialog();
-					if (dialogDop.ShowDialog() == DialogResult.OK)
-					{
-						var airplane = new Aerobus(100, 1000, dialog.Color, dialogDop.Color, true, true, 10, 1);
-						if (aerodromCollection[listBoxAerodrom.SelectedItem.ToString()] + airplane)
-						{
-							Draw();
-						}
-						else
-						{
-							MessageBox.Show("Аэродром переполнен");
-						}
-					}
-				}
-			}
-		}
-
 		private void buttonTakeAirplane_Click(object sender, EventArgs e)
 		{
 			if (listBoxAerodrom.SelectedIndex > -1 && maskedTextBox.Text != "")
@@ -140,6 +95,28 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 			Draw();
 		}
 
+		private void buttonAddAir_Click(object sender, EventArgs e)
+		{
+			var formAerobusConfig = new FormAerobusConfig();
+			formAerobusConfig.AddEvent(AddAir);
+			formAerobusConfig.Show();
+		}
+
+		private void AddAir(Vehicle aer)
+		{
+			if (aer != null && listBoxAerodrom.SelectedIndex > -1)
+			{
+				if ((aerodromCollection[listBoxAerodrom.SelectedItem.ToString()]) + aer)
+				{
+					Draw();
+				}
+				else
+				{
+					MessageBox.Show("Самолет не удалось поставить");
+				}
+			}
+		}
+
 		private void buttonAddtoLinkedList_Click(object sender, EventArgs e)
 		{
 			if (link_list.Count > 0)
@@ -155,5 +132,6 @@ MessageBoxIcon.Question) == DialogResult.Yes)
 			}
 			Draw();
 		}
+
 	}
 }

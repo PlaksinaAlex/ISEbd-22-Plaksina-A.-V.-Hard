@@ -29,8 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.pictureBoxAerodrom = new System.Windows.Forms.PictureBox();
-			this.buttonSetAirplane = new System.Windows.Forms.Button();
-			this.buttonSetAerobus = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonTakeAirplane = new System.Windows.Forms.Button();
 			this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -40,6 +38,7 @@
 			this.listBoxAerodrom = new System.Windows.Forms.ListBox();
 			this.buttonAddAerodrom = new System.Windows.Forms.Button();
 			this.buttonDelAerodrom = new System.Windows.Forms.Button();
+			this.buttonAddAir = new System.Windows.Forms.Button();
 			this.buttonAddtoLinkedList = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxAerodrom)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -53,27 +52,6 @@
 			this.pictureBoxAerodrom.Size = new System.Drawing.Size(670, 450);
 			this.pictureBoxAerodrom.TabIndex = 0;
 			this.pictureBoxAerodrom.TabStop = false;
-			// 
-			// buttonSetAirplane
-			// 
-			this.buttonSetAirplane.Location = new System.Drawing.Point(688, 202);
-			this.buttonSetAirplane.Name = "buttonSetAirplane";
-			this.buttonSetAirplane.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.buttonSetAirplane.Size = new System.Drawing.Size(92, 34);
-			this.buttonSetAirplane.TabIndex = 1;
-			this.buttonSetAirplane.Text = "припарковать самолет";
-			this.buttonSetAirplane.UseVisualStyleBackColor = true;
-			this.buttonSetAirplane.Click += new System.EventHandler(this.buttonSetAirplane_Click);
-			// 
-			// buttonSetAerobus
-			// 
-			this.buttonSetAerobus.Location = new System.Drawing.Point(688, 242);
-			this.buttonSetAerobus.Name = "buttonSetAerobus";
-			this.buttonSetAerobus.Size = new System.Drawing.Size(91, 54);
-			this.buttonSetAerobus.TabIndex = 2;
-			this.buttonSetAerobus.Text = "припарковать аэробус";
-			this.buttonSetAerobus.UseVisualStyleBackColor = true;
-			this.buttonSetAerobus.Click += new System.EventHandler(this.buttonSetAerobus_Click);
 			// 
 			// groupBox1
 			// 
@@ -168,11 +146,22 @@
 			this.buttonAddtoLinkedList.UseVisualStyleBackColor = true;
 			this.buttonAddtoLinkedList.Click += new System.EventHandler(this.buttonAddtoLinkedList_Click);
 			// 
+			// buttonAddAir
+			// 
+			this.buttonAddAir.Location = new System.Drawing.Point(685, 246);
+			this.buttonAddAir.Name = "buttonAddAir";
+			this.buttonAddAir.Size = new System.Drawing.Size(95, 45);
+			this.buttonAddAir.TabIndex = 9;
+			this.buttonAddAir.Text = "Добавить самолет";
+			this.buttonAddAir.UseVisualStyleBackColor = true;
+			this.buttonAddAir.Click += new System.EventHandler(this.buttonAddAir_Click);
+			// 
 			// FormAerodrom
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.buttonAddAir);
 			this.Controls.Add(this.buttonAddtoLinkedList);
 			this.Controls.Add(this.buttonDelAerodrom);
 			this.Controls.Add(this.buttonAddAerodrom);
@@ -180,8 +169,6 @@
 			this.Controls.Add(this.textBoxNewLevelName);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.buttonSetAerobus);
-			this.Controls.Add(this.buttonSetAirplane);
 			this.Controls.Add(this.pictureBoxAerodrom);
 			this.Name = "FormAerodrom";
 			this.Text = "Аэродром";
@@ -196,8 +183,6 @@
 		#endregion
 
 		private System.Windows.Forms.PictureBox pictureBoxAerodrom;
-		private System.Windows.Forms.Button buttonSetAirplane;
-		private System.Windows.Forms.Button buttonSetAerobus;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button buttonTakeAirplane;
 		private System.Windows.Forms.MaskedTextBox maskedTextBox;
@@ -207,6 +192,7 @@
 		private System.Windows.Forms.ListBox listBoxAerodrom;
 		private System.Windows.Forms.Button buttonAddAerodrom;
 		private System.Windows.Forms.Button buttonDelAerodrom;
+		private System.Windows.Forms.Button buttonAddAir;
 		private System.Windows.Forms.Button buttonAddtoLinkedList;
 	}
 }
