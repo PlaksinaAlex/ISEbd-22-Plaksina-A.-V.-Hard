@@ -39,6 +39,32 @@ namespace Lab1_Plaksina
 
             InD.Illuminator = CountIll;
         }
+        public Aerobus(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 7)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Window = Convert.ToBoolean(strs[4]);
+                Floor = Convert.ToBoolean(strs[5]);
+                if (strs[6] == "Dop_CircleIll")
+                {
+                    InD = new Dop_CircleIll();
+                }
+                else if (strs[6] == "Dop_SquareIll")
+                {
+                    InD = new Dop_SquareIll();
+                }
+                else if (strs[6] == "Dop_StripIll")
+                {
+                    InD = new Dop_StripIll();
+                }
+                InD.Illuminator = 10;
+            }
+        }
         public override void DrawTransport(Graphics g)
         {
             base.DrawTransport(g);
@@ -67,6 +93,10 @@ namespace Lab1_Plaksina
         public void SetTypesIll(Inter_Dop type)
         {
             this.InD = type;
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Window}{separator}{Floor}{separator}{InD.GetType().Name}";
         }
     }
 }
