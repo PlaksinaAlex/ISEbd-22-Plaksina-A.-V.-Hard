@@ -113,5 +113,17 @@ namespace Lab1_Plaksina
                 return null;
             }
         }
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
+        }
+        public void ClearPlaces()
+        {
+            _places.Clear();
+        }
     }
 }

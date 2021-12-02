@@ -13,12 +13,23 @@ namespace Lab1_Plaksina
 		protected readonly int carWidth = 155;
 		protected readonly int carHeight = 66;
 
+		protected readonly char separator = ';';
 		public Airplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
 			MainColor = mainColor;
 
+		}
+		public Airplane(string info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 3)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+			}
 		}
 		protected Airplane(int maxSpeed, float weight, Color mainColor, int carWidth, int carHeight)
 		{
@@ -94,6 +105,10 @@ namespace Lab1_Plaksina
 			g.FillEllipse(brush, _startPosX + 41, _startPosY + 62, 4, 4);
 			g.FillEllipse(brush, _startPosX + 34, _startPosY + 62, 4, 4);
 			g.FillEllipse(brush, _startPosX + 118, _startPosY + 62, 4, 4);
+		}
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
 		}
 	}
 
