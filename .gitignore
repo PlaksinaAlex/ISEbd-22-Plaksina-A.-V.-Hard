@@ -364,6 +364,5 @@ FodyWeavers.xsd
 
 # mojo
 
-*.config
 Properties
 *.resx
