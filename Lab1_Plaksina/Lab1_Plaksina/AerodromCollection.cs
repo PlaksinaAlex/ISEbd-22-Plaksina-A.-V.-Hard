@@ -69,7 +69,7 @@ namespace Lab1_Plaksina
 				}
 			}
 		}
-		public bool SaveData(string filename)
+		public void SaveData(string filename)
 		{
 			if (File.Exists(filename))
 			{
@@ -99,25 +99,20 @@ namespace Lab1_Plaksina
 					}
 				}
 			}
-			return true;
 		}
 
-		public bool SaveData(string filename, string dockName)
+		public void SaveData(string filename, string aerodromName)
 		{
 			if (File.Exists(filename))
 			{
 				File.Delete(filename);
 			}
-			if (!aerodromStages.ContainsKey(dockName))
-			{
-				return false;
-			}
 			using (StreamWriter sw = new StreamWriter(filename))
 			{
 				sw.WriteLine($"AerodromOne");
-				sw.WriteLine($"Aerodrom{separator}{dockName}");
+				sw.WriteLine($"Aerodrom{separator}{aerodromName}");
 				ITransport aer = null;
-				var level = aerodromStages[dockName];
+				var level = aerodromStages[aerodromName];
 				for (int i = 0; (aer = level.GetNext(i)) != null; i++)
 				{
 					if (aer != null)
@@ -134,13 +129,12 @@ namespace Lab1_Plaksina
 					}
 				}
 			}
-			return true;
 		}
-		public bool LoadAerodromCollection(string filename)
+		public void LoadAerodromCollection(string filename)
 		{
 			if (!File.Exists(filename))
 			{
-				return false;
+				throw new FileNotFoundException();
 			}
 			using (StreamReader sr = new StreamReader(filename))
 			{
@@ -150,46 +144,49 @@ namespace Lab1_Plaksina
 				if (line.Contains("AerodromCollection"))
 				{
 					aerodromStages.Clear();
-					line = sr.ReadLine();
-					while (line != null)
-					{
-						if (line.Contains("Aerodrom"))
-						{
-							key = line.Split(separator)[1];
-							aerodromStages.Add(key, new Aerodrom<Vehicle, Dop_CircleIll>(pictureWidth, pictureHeight));
-							line = sr.ReadLine();
-							continue;
-						}
-						if (string.IsNullOrEmpty(line))
-						{
-							line = sr.ReadLine();
-							continue;
-						}
-						if (line.Split(separator)[0] == "Airplane")
-						{
-							aer = new Airplane(line.Split(separator)[1]);
-						}
-						else if (line.Split(separator)[0] == "Aerobus")
-						{
-							aer = new Aerobus(line.Split(separator)[1]);
-						}
-						var result = aerodromStages[key] + aer;
-						if (!result)
-						{
-							return false;
-						}
-						line = sr.ReadLine();
-					}
-					return true;
 				}
-				return false;
+				else
+				{
+					throw new FileLoadException("Неверный формат файла");
+
+				}
+				line = sr.ReadLine();
+				while (line != null)
+				{
+					if (line.Contains("Aerodrom"))
+					{
+						key = line.Split(separator)[1];
+						aerodromStages.Add(key, new Aerodrom<Vehicle, Dop_CircleIll>(pictureWidth, pictureHeight));
+						line = sr.ReadLine();
+						continue;
+					}
+					if (string.IsNullOrEmpty(line))
+					{
+						line = sr.ReadLine();
+						continue;
+					}
+					if (line.Split(separator)[0] == "Airplane")
+					{
+						aer = new Airplane(line.Split(separator)[1]);
+					}
+					else if (line.Split(separator)[0] == "Aerobus")
+					{
+						aer = new Aerobus(line.Split(separator)[1]);
+					}
+					var result = aerodromStages[key] + aer;
+					if (!result)
+					{
+						throw new FileLoadException("Не удалось загрузить самолет на аэродром");
+					}
+					line = sr.ReadLine();
+				}
 			}
 		}
-		public bool LoadAerodrom(string filename)
+		public void LoadAerodrom(string filename)
 		{
 			if (!File.Exists(filename))
 			{
-				return false;
+				throw new FileNotFoundException();
 			}
 			using (StreamReader sr = new StreamReader(filename))
 			{
@@ -231,13 +228,11 @@ namespace Lab1_Plaksina
 						var result = aerodromStages[key] + aer;
 						if (!result)
 						{
-							return false;
+							throw new FileLoadException("Не удалось загрузить самолет на аэродром");
 						}
 						line = sr.ReadLine();
 					}
-					return true;
 				}
-				return false;
 			}
 		}
 	}

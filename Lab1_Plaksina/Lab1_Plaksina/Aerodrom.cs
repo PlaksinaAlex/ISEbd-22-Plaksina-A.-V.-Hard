@@ -43,7 +43,7 @@ namespace Lab1_Plaksina
         {
             if (p._places.Count >= p._maxCount)
             {
-                return false;
+                throw new AerodromOverflowException();
             }
             p._places.Add(aer);
             return true;
@@ -53,7 +53,7 @@ namespace Lab1_Plaksina
         {
             if (index < -1 || index >= p._places.Count)
             {
-                return null;
+                throw new AerodromNotFoundException(index);
             }
             T aer = p._places[index];
             p._places.RemoveAt(index);
