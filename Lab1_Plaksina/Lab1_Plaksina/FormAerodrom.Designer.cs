@@ -48,6 +48,7 @@
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonAddtoLinkedList = new System.Windows.Forms.Button();
+			this.buttonSort = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxAerodrom)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -158,7 +159,7 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -168,10 +169,10 @@
 			// файлToolStripMenuItem
 			// 
 			this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.сохранитьToolStripMenuItem,
-			this.загрузитьToolStripMenuItem,
-			this.сохранитьОдинАэродромToolStripMenuItem,
-			this.загрузитьОдинАэродромToolStripMenuItem});
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem,
+            this.сохранитьОдинАэродромToolStripMenuItem,
+            this.загрузитьОдинАэродромToolStripMenuItem});
 			this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
 			this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
 			this.файлToolStripMenuItem.Text = "Файл";
@@ -223,11 +224,22 @@
 			this.buttonAddtoLinkedList.UseVisualStyleBackColor = true;
 			this.buttonAddtoLinkedList.Click += new System.EventHandler(this.buttonAddtoLinkedList_Click);
 			// 
+			// buttonSort
+			// 
+			this.buttonSort.Location = new System.Drawing.Point(687, 203);
+			this.buttonSort.Name = "buttonSort";
+			this.buttonSort.Size = new System.Drawing.Size(94, 37);
+			this.buttonSort.TabIndex = 11;
+			this.buttonSort.Text = "Сортировать";
+			this.buttonSort.UseVisualStyleBackColor = true;
+			this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+			// 
 			// FormAerodrom
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.buttonSort);
 			this.Controls.Add(this.buttonAddAir);
 			this.Controls.Add(this.buttonAddtoLinkedList);
 			this.Controls.Add(this.buttonDelAerodrom);
@@ -273,5 +285,6 @@
 		private System.Windows.Forms.Button buttonAddtoLinkedList;
 		private System.Windows.Forms.ToolStripMenuItem сохранитьОдинАэродромToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem загрузитьОдинАэродромToolStripMenuItem;
+		private System.Windows.Forms.Button buttonSort;
 	}
 }

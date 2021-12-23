@@ -4,16 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace Lab1_Plaksina
 {
-	public class Airplane : Vehicle
+	public class Airplane : Vehicle, IEquatable<Airplane>, IComparable<Airplane>, IEnumerator<object>, IEnumerable<object>
 	{
 
 		protected readonly int carWidth = 155;
 		protected readonly int carHeight = 66;
 
 		protected readonly char separator = ';';
+		private int _currentIndex = -1;
+		private object[] myPropertyInfo => Type.GetType("Airplane").GetProperties();
+		public object Current => myPropertyInfo[_currentIndex];
+		object IEnumerator.Current => myPropertyInfo[_currentIndex];
 		public Airplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
@@ -109,6 +114,95 @@ namespace Lab1_Plaksina
 		public override string ToString()
 		{
 			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+		}
+		public bool Equals(Airplane other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+
+			if (!(obj is Airplane airObj))
+			{
+				return false;
+
+			}
+			else
+			{
+				return Equals(airObj);
+			}
+		}
+		public int CompareTo(Airplane obj)
+		{
+			if (MaxSpeed != obj.MaxSpeed)
+			{
+				return MaxSpeed.CompareTo(obj.MaxSpeed);
+			}
+			if (Weight != obj.Weight)
+			{
+				return Weight.CompareTo(obj.Weight);
+			}
+			if (MainColor != obj.MainColor)
+			{
+				return MainColor.Name.CompareTo(obj.MainColor.Name);
+			}
+			return 0;
+		}
+		public void Dispose()
+		{
+
+		}
+		public bool MoveNext()
+		{
+			_currentIndex++;
+			return _currentIndex < 8;
+		}
+
+		public void Reset()
+		{
+			_currentIndex = -1;
+		}
+
+		public IEnumerator<object> GetEnumerator()
+		{
+			return this;
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+
+		private void printProp()
+		{
+			foreach (var prop in this.ToString().Split(separator))
+			{
+				Console.WriteLine(prop);
+			}
 		}
 	}
 

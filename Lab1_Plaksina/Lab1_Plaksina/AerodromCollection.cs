@@ -81,21 +81,17 @@ namespace Lab1_Plaksina
 				foreach (var level in aerodromStages)
 				{
 					sw.WriteLine($"Aerodrom{separator}{level.Key}");
-					ITransport aer = null;
-					for (int i = 0; (aer = level.Value.GetNext(i)) != null; i++)
+					foreach (ITransport aer in level.Value)
 					{
-						if (aer != null)
+						if (aer.GetType().Name == "Airplane")
 						{
-							if (aer.GetType().Name == "Airplane")
-							{
-								sw.Write($"Airplane{separator}");
-							}
-							if (aer.GetType().Name == "Aerobus")
-							{
-								sw.Write($"Aerobus{separator}");
-							}
-							sw.WriteLine(aer);
+							sw.Write($"Airplane{separator}");
 						}
+						if (aer.GetType().Name == "Aerobus")
+						{
+							sw.Write($"Aerobus{separator}");
+						}
+						sw.WriteLine(aer);
 					}
 				}
 			}
@@ -109,13 +105,12 @@ namespace Lab1_Plaksina
 			}
 			using (StreamWriter sw = new StreamWriter(filename))
 			{
-				sw.WriteLine($"AerodromOne");
-				sw.WriteLine($"Aerodrom{separator}{aerodromName}");
-				ITransport aer = null;
-				var level = aerodromStages[aerodromName];
-				for (int i = 0; (aer = level.GetNext(i)) != null; i++)
+				sw.Write($"AerodromOne{Environment.NewLine}");
+				sw.Write($"Aerodrom{separator}{aerodromName}{Environment.NewLine}");
+				foreach (var level in aerodromStages)
 				{
-					if (aer != null)
+					sw.WriteLine($"Aerodrom{separator}{level.Key}");
+					foreach (ITransport aer in level.Value)
 					{
 						if (aer.GetType().Name == "Airplane")
 						{
