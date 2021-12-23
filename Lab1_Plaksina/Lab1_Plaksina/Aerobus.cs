@@ -17,6 +17,7 @@ namespace Lab1_Plaksina
 
         private Inter_Dop InD;
 
+        public string IDopName => InD.GetType().Name;
         public Aerobus(int maxSpeed, float weight, Color mainColor, Color dopColor, bool window, bool floor, int CountIll, int TypeIll)
             : base(maxSpeed, weight, mainColor, 155, 66)
         {
@@ -98,6 +99,111 @@ namespace Lab1_Plaksina
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Window}{separator}{Floor}{separator}{InD.GetType().Name}";
         }
+        public bool Equals(Aerobus other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Window != other.Window)
+            {
+                return false;
+            }
+            if (Floor != other.Floor)
+            {
+                return false;
+            }
+            if (IDopName != other.IDopName)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Aerobus airObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(airObj);
+            }
+        }
+        public int CompareTo(Object obj)
+        {
+            if (obj == null)
+            {
+                return -1;
+            }
+            if (!(obj is Aerobus aerObj))
+            {
+                return -1;
+            }
+            else
+            {
+                return CompareTo(aerObj);
+            }
+        }
+        public int CompareTo(Aerobus obj)
+        {
+
+            var res = base.CompareTo(obj);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != obj.DopColor)
+            {
+                return DopColor.Name.CompareTo(obj.DopColor.Name);
+            }
+            if (Floor != obj.Floor)
+            {
+                return Floor.CompareTo(obj.Floor);
+            }
+            if (Window != obj.Window)
+            {
+                return Window.CompareTo(obj.Window);
+            }
+            if (IDopName != obj.IDopName)
+            {
+                return IDopName.CompareTo(obj.IDopName);
+            }
+            return 0;
+        }
+        private void printProp()
+        {
+            foreach (var str in this.ToString().Split(separator))
+            {
+                Console.WriteLine(str);
+            }
+        }
+
     }
 }
 

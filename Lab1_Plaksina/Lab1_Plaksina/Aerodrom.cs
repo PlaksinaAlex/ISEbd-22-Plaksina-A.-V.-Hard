@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+using System.Collections;
 
 namespace Lab1_Plaksina
 {
-    public class Aerodrom<T, P>
+    public class Aerodrom<T, P> : IEnumerator<T>, IEnumerable<T>
 
         where T : class, ITransport
         where P : Inter_Dop
@@ -29,6 +29,10 @@ namespace Lab1_Plaksina
 
         public int index = -1;
 
+        private int _currentIndex;
+        public T Current => _places[_currentIndex];
+        object IEnumerator.Current => _places[_currentIndex];
+
         public Aerodrom(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
@@ -44,6 +48,10 @@ namespace Lab1_Plaksina
             if (p._places.Count >= p._maxCount)
             {
                 throw new AerodromOverflowException();
+            }
+            if (p._places.Contains(aer))
+            {
+                throw new AerodromAlreadyHaveException();
             }
             p._places.Add(aer);
             return true;
@@ -125,5 +133,31 @@ namespace Lab1_Plaksina
         {
             _places.Clear();
         }
+        public void Sort() => _places.Sort((IComparer<T>)new AirplaneComparer());
+        public void Dispose()
+        {
+        }
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+
     }
 }
